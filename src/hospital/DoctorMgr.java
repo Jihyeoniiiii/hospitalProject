@@ -12,7 +12,7 @@ public class DoctorMgr extends Manager implements DataEngineInterface {
 	public static DoctorMgr getInstance() {
 		return mgr;
 	}
-	private String[] headers = {"code", "name", "phone"};
+	private String[] headers = {"의사코드", "이름", "연락처"};
 
 	@Override
 	public int getColumnCount() {

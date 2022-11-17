@@ -18,6 +18,7 @@ public class Main {
 	static Manager doctorMgr = new Manager();
 	static Manager patientMgr = new Manager();
 	static Manager receptionMgr = new Manager();
+	static Manager reservationMgr = new Manager();
 	public void run()
 	{
 		doctorMgr.readAll("doctor.txt",new Factory(){

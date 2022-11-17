@@ -1,4 +1,4 @@
-package Hospital;
+package hospital;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -9,13 +9,12 @@ import mgr.Factory;
 import mgr.Manageable;
 import mgr.Manager;
 
-public class ReservationMgr {
-	public class ItemMgr implements DataEngineInterface {
-		private static ItemMgr mgr = null;
-		private ItemMgr() {}
-		public static ItemMgr getInstance() {
+public class ReservationMgr implements DataEngineInterface {
+		private static ReservationMgr mgr = null;
+		private ReservationMgr() {}
+		public static ReservationMgr getInstance() {
 			if (mgr == null)
-				mgr = new ItemMgr();
+				mgr = new ReservationMgr();
 			return mgr;
 		}
 		
@@ -36,7 +35,7 @@ public class ReservationMgr {
 		@Override
 		public List<Manageable> search(String kwd) {
 			// TODO Auto-generated method stub
-			return Main.ReservationMgr.findAll(kwd);
+			return Main.reservationMgr.findAll(kwd);
 		}
 		@Override
 		public void addNewItem(String[] uiTexts) {
@@ -52,5 +51,5 @@ public class ReservationMgr {
 			// TODO Auto-generated method stub
 
 		}
-	}
 }
+
