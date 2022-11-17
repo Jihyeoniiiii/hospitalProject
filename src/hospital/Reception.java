@@ -16,7 +16,8 @@ public class Reception implements Manageable, UIData {
     @Override
     public void read(Scanner scan) {
         date = scan.next();
-        patient = (Patient) Main.patientMgr.find(scan.next());
+        String patientCode = scan.next();
+        patient = (Patient) Main.patientMgr.find(patientCode);
         if (patient == null) {
             //patient 클래스에서 등록 진행
         }
@@ -26,20 +27,23 @@ public class Reception implements Manageable, UIData {
         String temp;
         while(true){
             temp = scan.next();
-            if(temp.equals("-1")){
+            if(temp.equals("0")){
                 break;
             }
             symptom+=temp+" ";
         }
-        doctor = (Doctor) Main.doctorMgr.find(scan.next());
+        doctor = (Doctor)Main.doctorMgr.find(scan.next());
 
         if (doctor == null) {
             System.out.println("일치하는 의사가 없음");
             System.exit(0);
         }
 
-        if(!doctor.matches(name)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
+        if(patient.matches(name)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
             doctor.addPatient(patient);
+        }
+        if(patient.matches(patientCode)) {//신규환자일 경우 의사가 담당하는 patientList에 저장함. 아닐 경우 pass.
+            patient.addReception(this);
         }
     }
 

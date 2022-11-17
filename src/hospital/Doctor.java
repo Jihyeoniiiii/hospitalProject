@@ -8,7 +8,7 @@ import mgr.Manager;
 
 public class Doctor implements Manageable
 {
-	//ÀÇ»çÄÚµå ÀÇ»çÀÌ¸§ ³ªÀÌ ¿¬¶ôÃ³ ¼ºº°
+	//ì˜ì‚¬ì½”ë“œ ì˜ì‚¬ì´ë¦„ ë‚˜ì´ ì—°ë½ì²˜ ì„±ë³„
 	String code;
 	String name;
 	int age;
@@ -25,8 +25,8 @@ public class Doctor implements Manageable
 		gender = scan.next();
 	}
 	/*
-	 [ÀÇ»çÄÚµå] ÀÇ»çÀÌ¸§ : ÀÇ»ç¿¬¶ôÃ³
-	 [Áø·á È¯ÀÚ] È¯ÀÚÀÌ¸§ : Á¢¼ö³»¿ª - ½Ã°£´ë
+	 [ì˜ì‚¬ì½”ë“œ] ì˜ì‚¬ì´ë¦„ : ì˜ì‚¬ì—°ë½ì²˜
+	 [ì§„ë£Œ í™˜ì] í™˜ìì´ë¦„ : ì ‘ìˆ˜ë‚´ì—­ - ì‹œê°„ëŒ€
 	 */
 	@Override
 	public void print() {
@@ -34,8 +34,8 @@ public class Doctor implements Manageable
 		for(Patient p : patientList)
 			p.print();
 	}
-	//Áø·á Å¬·¡½º¿¡¼­ µî·ÏÇÒ ¶§ ÀÌ¸§ ÀÔ·Â ¹Ş¾Æ¼­ patient findÇÏ¿© ÀúÀåÇÏ°í,
-	//°´Ã¼¸¦ Àü¼ÛÇÏ¿© addPatient (10ÁÖÂ÷ °³ÀÎ°úÁ¦ Order Å¬·¡½º Âü°í)
+	//ì§„ë£Œ í´ë˜ìŠ¤ì—ì„œ ë“±ë¡í•  ë•Œ ì´ë¦„ ì…ë ¥ ë°›ì•„ì„œ patient findí•˜ì—¬ ì €ì¥í•˜ê³ ,
+	//ê°ì²´ë¥¼ ì „ì†¡í•˜ì—¬ addPatient (10ì£¼ì°¨ ê°œì¸ê³¼ì œ Order í´ë˜ìŠ¤ ì°¸ê³ )
 	void addPatient(Patient pati)
 	{
 		patientList.add(pati);
