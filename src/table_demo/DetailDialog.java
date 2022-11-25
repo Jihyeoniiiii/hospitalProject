@@ -2,6 +2,9 @@ package table_demo;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -9,32 +12,43 @@ import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 
 public class DetailDialog extends javax.swing.JDialog {
 	String[] itemDetails;
+	DefaultTableModel model;
+	JTable table;
+	JScrollPane scroll;
+
+	String title[] = { "ë°±ì‹ ì¢…ë¥˜", "1ì°¨", "2ì°¨", "3ì°¨", "ì¶”4ì°¨", "ì¶”5ì°¨", "ì¶”6ì°¨" };
+	String data[][] = { { "BCG" }, { "HepB" }, { "DTaP" }, { "Tdap" }, { "IPV" }, { "Hib" }, { "PCV" }, { "MMR" },
+			{ "VAR" }, { "HepA" }, { "IJEV" }, { "LJEV" }, { "RV1" }, { "RV5" } };
+	
 	JLabel details[] = new JLabel[5];
 	DetailDialog(String[] texts) {
 		super(GUIMain.mainFrame);
 		itemDetails = texts;
 	}
+	
 	void setup() {
-		setTitle("»óÇ°»ó¼¼º¸±â");
-		JPanel pane = new JPanel(new BorderLayout());
-		JPanel lpane = new JPanel(new GridLayout(3, 1));
-		JLabel photo = new JLabel("   Photo   ");
-		photo.setOpaque(true);  // JLabelÀº ±âº»ÀÌ ¹è°æ Åõ¸í
-		photo.setPreferredSize(new Dimension(150, 150));
-		photo.setBackground(Color.YELLOW);
-		details[0] = new JLabel("»óÇ°ÄÚµå: " + itemDetails[0]);
-		details[1] = new JLabel("»óÇ°¸í: " + itemDetails[1]);
-		details[2] = new JLabel("°¡°Ý: " + itemDetails[2]);
-		lpane.add(details[0]);
-		lpane.add(details[1]);
-		lpane.add(details[2]);
-		pane.add(lpane, BorderLayout.CENTER);
-		pane.add(photo, BorderLayout.LINE_END);
-		this.setMinimumSize(new Dimension(400, 150));  // ´ëÈ­»óÀÚ Å©±â ¼³Á¤
-		setContentPane(pane);
+			setTitle("ì˜ˆë°©ì ‘ì¢…í˜„í™©");
+			
+			JPanel pane = new JPanel(new BorderLayout());
+			model = new DefaultTableModel(title, 14);
+			table = new JTable(model);
+			
+			scroll = new JScrollPane(table);
+			add(scroll);
+
+			for (int i = 0; i < data.length; i++) {
+				for (int j = 0; j < data[0].length; j++) {
+					table.setValueAt(data[i][j], i, j); // dataê°’ì„ ië²ˆ í–‰, jë²ˆ ì—´ì— ë„£ì–´ë¼
+				}
+			}
+			
+			pack();
+			setVisible(true);
 	}
 }
